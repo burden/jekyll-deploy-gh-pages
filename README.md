@@ -9,7 +9,9 @@ A GitHub Action for building and deploying a Jekyll repo back to its `gh-pages` 
 
 ## Secrets
 * `GITHUB_TOKEN`: An access key which scoped to the repository - we need this to push the built site files back to the repo. This is generated for you on each workflow run——see usage in [example](#example). (GitHub Provides)
-  
+  * `BUILD_DIR`: Specify the directory where your Jekyll project is built. (specify in workflow)
+* `REMOTE_BRANCH`: Specify the branch where Github Pages is configured (specify in workflow)
+
 ## Environment Variables
 * `GITHUB_ACTOR`: Username of repo owner or object initiating the action (GitHub Provides)
 * `GITHUB_REPO`: Owner/Repository (GitHub Provides)
@@ -31,6 +33,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+          BUILD_DIR: ${{ secrets.BUILD_DIR }}
+          PAGES_BRANCH: ${{ secrets.PAGES_BRANCH }}
+
         uses: BryanSchuetz/jekyll-deploy-gh-pages@master
 ```
 
